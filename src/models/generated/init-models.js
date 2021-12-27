@@ -6,7 +6,7 @@ function initModels(sequelize) {
     const user = _user(sequelize, DataTypes);
     const organisation = _organisation(sequelize, DataTypes);
 
-    user.belongsTo(organisation_id, { as: 'organisation_id', foreignKey: 'organisation_id' });
+    user.belongsTo(organisation, { as: 'organisation', foreignKey: 'organisation_id' });
     organisation.hasMany(user, { as: 'user', foreignKey: 'organisation_id' });
 
     return {

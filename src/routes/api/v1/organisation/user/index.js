@@ -1,6 +1,6 @@
 const express = require('express');
 const userRouter = express.Router({ mergeParams: true });
-const userController = require('../../../../../../controllers/user.js');
+const userController = require('../../../../../controllers/user.js');
 
 userRouter.get('', userController.getAll);
 userRouter.post('', userController.post);
