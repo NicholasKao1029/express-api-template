@@ -4,7 +4,7 @@ const sinon = require('sinon');
 const { mockReq, mockRes } = require('sinon-express-mock');
 const errorMessages = require('../../../src/errors/messages.js');
 
-describe('Widget Setting Controller', () => {
+describe('User Controller', () => {
     let req;
     let res;
     let userObj = {};
@@ -30,12 +30,17 @@ describe('Widget Setting Controller', () => {
         it('service layer called correctly', () => {
             sinon.stub(userService, 'findByOrganisationId').resolves(userObj);
             userController.getAll(req, res);
-            sinon.assert.calledWith(userService.findByOrganisationId, req.params.userId);
+            sinon.assert.calledWith(
+                userService.findByOrganisationId,
+                req.params.userId
+            );
         });
 
         describe('succces case', () => {
             beforeEach(() => {
-                sinon.stub(userService, 'findByOrganisationId').resolves(userObj);
+                sinon
+                    .stub(userService, 'findByOrganisationId')
+                    .resolves(userObj);
             });
 
             it('send status `200`', async () => {
@@ -55,7 +60,9 @@ describe('Widget Setting Controller', () => {
             const errorMessage = 'Generic Error Message';
             const exceptionType = new Error(errorMessage);
             beforeEach(() => {
-                sinon.stub(userService, 'findByOrganisationId').rejects(exceptionType);
+                sinon
+                    .stub(userService, 'findByOrganisationId')
+                    .rejects(exceptionType);
             });
 
             it('sends status `404`', async () => {
@@ -78,14 +85,17 @@ describe('Widget Setting Controller', () => {
         before(() => {});
 
         it('service layer called correctly', () => {
-            sinon.stub(userService, 'updateByOrgId').resolves(userObj);
+            sinon.stub(userService, 'updateByIdAndOrgId').resolves(userObj);
             userController.patchWidgetSettings(req, res);
-            sinon.assert.calledWith(userService.updateByOrgId, req.params.orgId);
+            sinon.assert.calledWith(
+                userService.updateByIdAndOrgId,
+                req.params.orgId
+            );
         });
 
         describe('succes case', () => {
             beforeEach(() => {
-                sinon.stub(userService, 'updateByOrgId').resolves(userObj);
+                sinon.stub(userService, 'updateByIdAndOrgId').resolves(userObj);
                 req.body = validRequestBody;
             });
 
@@ -106,7 +116,9 @@ describe('Widget Setting Controller', () => {
             const errorMessage = 'Generic Error Message';
             const exceptionType = new Error(errorMessage);
             beforeEach(() => {
-                sinon.stub(userService, 'updateByOrgId').rejects(exceptionType);
+                sinon
+                    .stub(userService, 'updateByIdAndOrgId')
+                    .rejects(exceptionType);
             });
 
             it('sends status `404`', async () => {
@@ -123,7 +135,9 @@ describe('Widget Setting Controller', () => {
         describe('Update object attributes incorrect wtf', () => {
             const exception = new Error(errorMessages.invalidUpdateAttribute);
             beforeEach(() => {
-                sinon.stub(userService, 'updateByOrgId').rejects(exception);
+                sinon
+                    .stub(userService, 'updateByIdAndOrgId')
+                    .rejects(exception);
                 req.body = invalidRequestBody;
             });
 
@@ -134,7 +148,10 @@ describe('Widget Setting Controller', () => {
 
             it('sends status error message', async () => {
                 await userController.patchWidgetSettings(req, res);
-                sinon.assert.calledWith(res.send, errorMessages.invalidUpdateAttribute);
+                sinon.assert.calledWith(
+                    res.send,
+                    errorMessages.invalidUpdateAttribute
+                );
             });
         });
     });

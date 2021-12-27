@@ -7,7 +7,7 @@ const { makeMockModels } = require('sequelize-test-helpers');
 
 chai.use(chaiAsPromised);
 
-describe('Widget Settings Dao', () => {
+describe('User Dao', () => {
     const user = { findOne: sinon.stub(), findAll: sinon.stub() };
     const mockModels = makeMockModels({ user });
 
@@ -100,7 +100,7 @@ describe('Widget Settings Dao', () => {
     });
 
     //describe('Update by orgId', () => {
-    //    // NOTE: due to technical debt where we would post new widget settings,
+    //    // NOTE: due to technical debt where we would post new User,
     //    // NOTE: we update all settings to make sure they apply
     //    //
     //    const updateObj = {
@@ -161,7 +161,7 @@ describe('Widget Settings Dao', () => {
     //        databaseReturnNoNarrationSetting = [0, []];
     //    });
 
-    //    it('Update widget settings model called correctly', async () => {
+    //    it('Update User model called correctly', async () => {
     //        user.findAll.resolves(databaseReturn);
     //        await userDao.updateByOrgId(orgId, updateObj);
     //        const options = {

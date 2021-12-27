@@ -44,7 +44,7 @@ const patch = async (req, res) => {
     let user;
 
     try {
-        user = await userService.update(
+        user = await userService.updateByIdAndOrgId(
             orgId,
             userId,
             updateObj

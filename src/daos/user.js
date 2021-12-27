@@ -40,10 +40,10 @@ const create = async (model) => {
     return UserModel.create(model);
 };
 
-const update = async (userId, id, updateObj) => {
+const updateByIdAndOrgId = async (userId, id, updateObj) => {
     const query = _findByOrganisationIdAndId(userId, id);
     query.returning = true;
-    return UserModel.update(updateObj, query);
+    return UserModel.updateByIdAndOrgId(updateObj, query);
 };
 
 const deleteByIdAndOrganisationId = async (userId, id) => {
@@ -55,6 +55,6 @@ module.exports = {
     getAllByOrganisationId,
     getByIdAndOrganisationId,
     create,
-    update,
+    updateByIdAndOrgId,
     deleteByIdAndOrganisationId
 };

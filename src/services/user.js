@@ -77,13 +77,13 @@ const deleteOmitSlice = async (orgId, id) => {
 
 const attributes = new Set(['name']);
 
-const update = async (orgId, id, updateObj) => {
+const updateByIdAndOrgId = async (orgId, id, updateObj) => {
     let user;
 
     assertAttributesSubset(attributes, updateObj);
 
     try {
-        user = await userDao.update(orgId, id, updateObj);
+        user = await userDao.updateByIdAndOrgId(orgId, id, updateObj);
 
         if (user) {
             return user;
@@ -100,5 +100,5 @@ module.exports = {
     findByIdAndOrgId,
     create,
     deleteOmitSlice,
-    update
+    updateByIdAndOrgId
 };
