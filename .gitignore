@@ -1,0 +1,7 @@
+*node_modules*
+.env
+*.nyc_output*
+.DS_Store
+**/temp_database_config.json
+build
+npm-debug.log

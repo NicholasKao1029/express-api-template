@@ -1,0 +1,23 @@
+FROM node:16 as development
+
+LABEL maintainer="Nick Kao"
+
+# Create App Directory
+RUN mkdir -p /app
+WORKDIR /app
+COPY . /app
+ADD . /app
+
+# Environment Variables
+ARG NODE_ENV=development
+ENV NODE_ENV=${NODE_ENV}
+
+# Install Dependencies
+COPY package.json .
+
+#Install nodemon for hot reloading
+RUN yarn
+
+# Exports
+EXPOSE $PORT
+CMD [ "yarn", "dev-start" ]
