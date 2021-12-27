@@ -29,6 +29,7 @@
         "start": "node ./src/index.js",
         "dev-start": "nodemon ./src/index.js",
         "lint": "eslint . --ext .js",
+        "format": "yarn prettier --write .",
         "prepare": "husky install",
         "test": "mocha 'tests/**/*.spec.js' --exit",
         "test-cov": "nyc mocha 'tests/**/*.spec.js' --exit",
