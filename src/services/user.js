@@ -6,9 +6,7 @@ const findByOrganisationId = async (orgId) => {
     let userList;
 
     try {
-        userList = await userDao.getAllByOrganisationId(
-            orgId
-        );
+        userList = await userDao.getAllByOrganisationId(orgId);
 
         if (userList) {
             return userList;
@@ -24,10 +22,7 @@ const findByIdAndOrgId = async (orgId, id) => {
     let user;
 
     try {
-        user = await userDao.getByIdAndOrganisationId(
-            orgId,
-            id
-        );
+        user = await userDao.getByIdAndOrganisationId(orgId, id);
 
         if (user) {
             return user;
@@ -39,9 +34,7 @@ const findByIdAndOrgId = async (orgId, id) => {
     }
 };
 
-const neededAttributes = new Set([
-    'name',
-]);
+const neededAttributes = new Set(['name']);
 
 const create = async (orgId, creationObj) => {
     let user;

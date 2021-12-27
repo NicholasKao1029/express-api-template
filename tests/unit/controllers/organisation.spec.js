@@ -79,7 +79,10 @@ describe('Organisation Controller', () => {
         it('service layer called correctly', () => {
             sinon.stub(organisationService, 'findById').resolves(orgObj);
             organisationController.getOrganisation(req, res);
-            sinon.assert.calledWith(organisationService.findById, req.params.orgId);
+            sinon.assert.calledWith(
+                organisationService.findById,
+                req.params.orgId
+            );
         });
 
         describe('succces case', () => {
@@ -104,7 +107,9 @@ describe('Organisation Controller', () => {
             const errorMessage = 'Generic Error Message';
             const exceptionType = new Error(errorMessage);
             beforeEach(() => {
-                sinon.stub(organisationService, 'findById').rejects(exceptionType);
+                sinon
+                    .stub(organisationService, 'findById')
+                    .rejects(exceptionType);
             });
 
             it('sends status `404`', async () => {

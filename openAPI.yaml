@@ -1,26 +1,25 @@
-swagger: "2.0"
+swagger: '2.0'
 info:
-  title: API
-  description: ""
-  version: "1.0.0"
+    title: API
+    description: ''
+    version: '1.0.0'
 host: DNS_NAME_OF_DEPLOYED_API
 schemes:
-  - "https"
+    - 'https'
 paths:
-  "/organisation":
-    get:
-      description: "Retrieve Organisation data"
-      operationId: "organisationId"
-      parameters:
-        -
-          name: organisationId
-          in: query
-          required: true
-          type: string
-      responses:
-        200:
-          description: "..."
-          schema:
-            type: string
-        400:
-          description: "Unable to retrieve organisation"
+    '/organisation':
+        get:
+            description: 'Retrieve Organisation data'
+            operationId: 'organisationId'
+            parameters:
+                - name: organisationId
+                  in: query
+                  required: true
+                  type: string
+            responses:
+                200:
+                    description: '...'
+                    schema:
+                        type: string
+                400:
+                    description: 'Unable to retrieve organisation'

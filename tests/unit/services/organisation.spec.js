@@ -41,14 +41,18 @@ describe('Organisation Service', () => {
         describe('success case, no error thrown from DAO', () => {
             it('returns organisation object', async () => {
                 sinon.stub(organisationDao, 'getAll').resolves(daoReturn);
-                const returnOrganisation = await organisationService.find(orgId);
+                const returnOrganisation = await organisationService.find(
+                    orgId
+                );
                 expect(returnOrganisation).to.deep.equal(orgObj);
             });
 
             it('handles no organisation with passed in id', async () => {
                 sinon.stub(organisationDao, 'getAll').resolves(undefined);
                 return expect(organisationService.find(-1))
-                    .to.eventually.be.rejectedWith(errorMessage.resourceDoesNotExist)
+                    .to.eventually.be.rejectedWith(
+                        errorMessage.resourceDoesNotExist
+                    )
                     .and.be.an.instanceOf(Error);
             });
         });
@@ -79,14 +83,18 @@ describe('Organisation Service', () => {
         describe('success case, no error thrown from DAO', () => {
             it('returns organisation object', async () => {
                 sinon.stub(organisationDao, 'getById').resolves(daoReturn);
-                const returnOrganisation = await organisationService.findById(orgId);
+                const returnOrganisation = await organisationService.findById(
+                    orgId
+                );
                 expect(returnOrganisation).to.deep.equal(orgObj);
             });
 
             it('handles no organisation with passed in id', async () => {
                 sinon.stub(organisationDao, 'getById').resolves(undefined);
                 return expect(organisationService.findById(-1))
-                    .to.eventually.be.rejectedWith(errorMessage.resourceDoesNotExist)
+                    .to.eventually.be.rejectedWith(
+                        errorMessage.resourceDoesNotExist
+                    )
                     .and.be.an.instanceOf(Error);
             });
         });

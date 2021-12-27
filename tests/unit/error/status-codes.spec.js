@@ -1,4 +1,7 @@
-const { httpStatusMap, getStatusFromError } = require('../../../src/errors/status-codes.js');
+const {
+    httpStatusMap,
+    getStatusFromError
+} = require('../../../src/errors/status-codes.js');
 const errorMessage = require('../../../src/errors/messages.js');
 const assert = require('assert');
 

@@ -1,17 +1,17 @@
 version: '3.7'
 
 services:
-  api:
-    container_name: api
-    build: 
-      context: .
-      target: development
-      dockerfile: Dockerfile-dev
-    volumes:
-      - /app/node_modules
-      - .:/app
-    ports:
-      - 8080:8080
-    stdin_open: true
-    env_file:
-      - .env
+    api:
+        container_name: api
+        build:
+            context: .
+            target: development
+            dockerfile: Dockerfile-dev
+        volumes:
+            - /app/node_modules
+            - .:/app
+        ports:
+            - 8080:8080
+        stdin_open: true
+        env_file:
+            - .env

@@ -33,15 +33,22 @@ describe('Omit Slice Service', () => {
 
         describe('success case, no error thrown from DAO', () => {
             it('returns organisation object', async () => {
-                sinon.stub(userDao, 'getAllByOrganisationId').resolves(daoReturn);
-                const returnOrganisation = await userService.findByOrganisationId(orgId);
+                sinon
+                    .stub(userDao, 'getAllByOrganisationId')
+                    .resolves(daoReturn);
+                const returnOrganisation =
+                    await userService.findByOrganisationId(orgId);
                 expect(returnOrganisation).to.deep.equal(userObj);
             });
 
             it('handles no organisation with passed in id', async () => {
-                sinon.stub(userDao, 'getAllByOrganisationId').resolves(daoReturnNoOrg);
+                sinon
+                    .stub(userDao, 'getAllByOrganisationId')
+                    .resolves(daoReturnNoOrg);
                 return expect(userService.findByOrganisationId(-1))
-                    .to.eventually.be.rejectedWith(errorMessage.resourceDoesNotExist)
+                    .to.eventually.be.rejectedWith(
+                        errorMessage.resourceDoesNotExist
+                    )
                     .and.be.an.instanceOf(Error);
             });
         });
@@ -51,7 +58,9 @@ describe('Omit Slice Service', () => {
             const exceptionType = new Error(errorMessage);
 
             beforeEach(() => {
-                sinon.stub(userDao, 'getAllByOrganisationId').rejects(exceptionType);
+                sinon
+                    .stub(userDao, 'getAllByOrganisationId')
+                    .rejects(exceptionType);
             });
 
             it('throws error to caller', async () => {
