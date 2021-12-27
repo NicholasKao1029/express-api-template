@@ -1,6 +1,7 @@
 # Description
 
-Barebones express API template with an MVC structure
+Barebones express API template following the MVC pattern
+[MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
 
 ## NOTES
 
@@ -23,7 +24,6 @@ Or use any deployment platform that can use Docker.
 1. Huksy Set Up https://medium.com/angular-in-depth/husky-6-lint-prettier-eslint-and-commitlint-for-javascript-project-d7174d44735a
 2. Lint Config Generator: https://eslint.org/demo#
 3. Commit Linting Rules: https://github.com/conventional-changelog/commitlint/#what-is-commitlint
-
 
 ## TODOs
 
@@ -52,3 +52,7 @@ Or use any deployment platform that can use Docker.
 ### Documentation 
 - https://swagger.io/
 - OpenAPI Docs => https://cloud.google.com/api-gateway/docs/openapi-overview
+
+### Testing
+- Unit testing is not expansive
+- E2E testing needs work
