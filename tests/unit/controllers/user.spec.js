@@ -77,7 +77,7 @@ describe('User Controller', () => {
         });
     });
 
-    describe('Get via user id', () => {
+    describe('Update via User Id and Org Id', () => {
         const validRequestBody = {};
 
         const invalidRequestBody = {};
@@ -86,14 +86,14 @@ describe('User Controller', () => {
 
         it('service layer called correctly', () => {
             sinon.stub(userService, 'updateByIdAndOrgId').resolves(userObj);
-            userController.patchWidgetSettings(req, res);
+            userController.patch(req, res);
             sinon.assert.calledWith(
                 userService.updateByIdAndOrgId,
                 req.params.orgId
             );
         });
 
-        describe('succes case', () => {
+        describe('success case', () => {
             beforeEach(() => {
                 sinon.stub(userService, 'updateByIdAndOrgId').resolves(userObj);
                 req.body = validRequestBody;
@@ -101,13 +101,13 @@ describe('User Controller', () => {
 
             it('send status `200`', async () => {
                 req.params.orgId = userId;
-                await userController.patchWidgetSettings(req, res);
+                await userController.patch(req, res);
                 sinon.assert.calledWith(res.status, 200);
             });
 
             it('send org as json', async () => {
                 req.params.orgId = userId;
-                await userController.patchWidgetSettings(req, res);
+                await userController.patch(req, res);
                 sinon.assert.calledWith(res.json, userObj);
             });
         });
@@ -122,12 +122,12 @@ describe('User Controller', () => {
             });
 
             it('sends status `404`', async () => {
-                await userController.patchWidgetSettings(req, res);
+                await userController.patch(req, res);
                 sinon.assert.calledWith(res.status, 404);
             });
 
             it('sends status error message', async () => {
-                await userController.patchWidgetSettings(req, res);
+                await userController.patch(req, res);
                 sinon.assert.calledWith(res.send, errorMessage);
             });
         });
@@ -142,12 +142,12 @@ describe('User Controller', () => {
             });
 
             it('sends status `400`', async () => {
-                await userController.patchWidgetSettings(req, res);
+                await userController.patch(req, res);
                 sinon.assert.calledWith(res.status, 400);
             });
 
             it('sends status error message', async () => {
-                await userController.patchWidgetSettings(req, res);
+                await userController.patch(req, res);
                 sinon.assert.calledWith(
                     res.send,
                     errorMessages.invalidUpdateAttribute

@@ -8,10 +8,7 @@ const get = async (req, res) => {
 
     try {
         console.log(userId, orgId);
-        userList = await userService.findByIdAndOrgId(
-            orgId,
-            userId
-        );
+        userList = await userService.findByIdAndOrgId(orgId, userId);
     } catch (e) {
         const status = getStatusFromError(e);
         res.status(status).send(e.message);
@@ -25,9 +22,7 @@ const getAll = async (req, res) => {
     let userList;
 
     try {
-        userList = await userService.findByOrganisationId(
-            orgId
-        );
+        userList = await userService.findByOrganisationId(orgId);
     } catch (e) {
         const status = getStatusFromError(e);
         res.status(status).send(e.message);
@@ -44,17 +39,13 @@ const patch = async (req, res) => {
     let user;
 
     try {
-        user = await userService.updateByIdAndOrgId(
-            orgId,
-            userId,
-            updateObj
-        );
+        user = await userService.updateByIdAndOrgId(orgId, userId, updateObj);
     } catch (e) {
         const status = getStatusFromError(e);
         res.status(status).send(e.message);
     }
 
-    res.status(200).send(user);
+    res.status(200).json(user);
 };
 
 const post = async (req, res) => {
@@ -63,10 +54,7 @@ const post = async (req, res) => {
     let userList;
 
     try {
-        userList = await userService.create(
-            userId,
-            createObj
-        );
+        userList = await userService.create(userId, createObj);
     } catch (e) {
         const status = getStatusFromError(e);
         res.status(status).send(e.message);
@@ -81,10 +69,7 @@ const deleteHandler = async (req, res) => {
     let userList;
 
     try {
-        userList = await userService.deleteOmitSlice(
-            userId,
-            id
-        );
+        userList = await userService.deleteOmitSlice(userId, id);
     } catch (e) {
         const status = getStatusFromError(e);
         res.status(status).send(e.message);
