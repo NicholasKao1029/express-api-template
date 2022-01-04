@@ -69,47 +69,47 @@ done
 echo ""
 echo ""
 
-#### TEST STUFF ####
+## TEST STUFF ####
 
-# # test template
-# TEMPLATEPATHCONTROLLERTEST='./template/controller_template.spec.js'
-# TEMPLATEPATHSERVICETEST='./template/service_template.spec.js'
-# TEMPLATEPATHDAOTEST='./template/dao_template.spec.js'
+# test template
+TEMPLATEPATHCONTROLLERTEST='./template/controller_template.spec.js'
+TEMPLATEPATHSERVICETEST='./template/service_template.spec.js'
+TEMPLATEPATHDAOTEST='./template/dao_template.spec.js'
 
-# testTemplatePaths=(
-#     $TEMPLATEPATHCONTROLLERTEST
-#     $TEMPLATEPATHSERVICETEST
-#     $TEMPLATEPATHDAOTEST
-# )
-# # test template
+testTemplatePaths=(
+    $TEMPLATEPATHCONTROLLERTEST
+    $TEMPLATEPATHSERVICETEST
+    $TEMPLATEPATHDAOTEST
+)
+# test template
 
-# CONTROLLERPATHTEST='./tests/unit/controllers/'
-# SERVICEPATHTEST='./tests/unit/services/'
-# DAOPATHTEST='./tests/unit/daos/'
+CONTROLLERPATHTEST='./tests/unit/controllers/'
+SERVICEPATHTEST='./tests/unit/services/'
+DAOPATHTEST='./tests/unit/daos/'
 
-# testpaths=(
-#     $CONTROLLERPATHTEST
-#     $SERVICEPATHTEST
-#     $DAOPATHTEST
-# )
+testpaths=(
+    $CONTROLLERPATHTEST
+    $SERVICEPATHTEST
+    $DAOPATHTEST
+)
 
 
-# echo "Attempt to generating test files"
-# for i in "${!testpaths[@]}"
-# do
-#     path="${testpaths[i]}"
+echo "Attempt to generating test files"
+for i in "${!testpaths[@]}"
+do
+    path="${testpaths[i]}"
 
-#     templatePath="${testTemplatePaths[i]}"
+    templatePath="${testTemplatePaths[i]}"
 
-#     FILE=$path$MODELNAME$TESTFILEEXT
+    FILE=$path$MODELNAME$TESTFILEEXT
 
-#     if test -f "$FILE"; then
-#         echo "$FILE exists. Not generated"
-#     else
-#         echo "$FILE doesn't exist. Generating from template $templatePath"
-#         cp "$templatePath" "$FILE"
-#     fi
+    if test -f "$FILE"; then
+        echo "$FILE exists. Not generated"
+    else
+        echo "$FILE doesn't exist. Generating from template $templatePath"
+        cp "$templatePath" "$FILE"
+    fi
 
-# done
+done
 
 echo 'Generation completed. exiting.' 
